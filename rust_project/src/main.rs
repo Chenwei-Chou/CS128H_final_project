@@ -70,13 +70,23 @@ fn main() -> Result<(), Box<dyn Error>> {
                 println!("To decrypt!!");
                 println!("============ orginal content begin ============");
                 let file_source = args.next().unwrap();
-                //println!("{}", file_source.to_string());
-                let input_data: String = fs::read_to_string(file_source).unwrap();
+                //intln!("{}", file_source.to_string());
+                let mut input_data: String = fs::read_to_string(file_source).unwrap();
                 println!("{}", &input_data);
                 println!("============ orginal content end ============");
                 println!("Your decrypted content");
                 println!("============ decrypted content begin ============");
-
+                let i_data = "aGVsbG8gd29ybGQ=";
+                //println!("{}", &input_data);
+                //let tmp = input_data.as_str();
+                //println!("{:?}, {:?}", tmp, i_data);
+                input_data.truncate(input_data.len() - 1);
+                let i_output = base64::decode(input_data).unwrap(); // <---- problem line
+                
+                //let result_data = base64::decode(&input_data).unwrap();
+                //let data_out = format!("{:x}", output);
+                println!("{:?}", String::from_utf8(i_output).unwrap());
+                //println!("{:?}", String::from_utf8(de_data).unwrap());
                 println!("============ decrypted content end ============");
             } else {
                 return Err("The input key and file can't match.".into());
