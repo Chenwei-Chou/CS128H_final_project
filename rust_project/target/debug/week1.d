@@ -1,0 +1,1 @@
+/home/vagrant/src/cs128honor/final_project/CS128H_final_project/rust_project/target/debug/week1: /home/vagrant/src/cs128honor/final_project/CS128H_final_project/rust_project/src/lib.rs /home/vagrant/src/cs128honor/final_project/CS128H_final_project/rust_project/src/main.rs

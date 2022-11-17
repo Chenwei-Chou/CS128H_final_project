@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/home/vagrant/src/cs128honor/final_project/CS128H_final_project/rust_project/target/debug/build/typenum-0b2b5891708d1c75/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/home/vagrant/src/cs128honor/final_project/CS128H_final_project/rust_project/target/debug/build/typenum-0b2b5891708d1c75/out/op.rs
