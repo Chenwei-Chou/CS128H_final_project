@@ -11,9 +11,9 @@ use md5::{Digest, Md5};
 
 fn main() -> Result<(), Box<dyn Error>> {
 
-    let x = "aGVsbG8gd29ybGQ=";
-    let xx = base64::decode(x).unwrap();
-    println!("{:?}", String::from_utf8(xx).unwrap());
+    //let x = "aGVsbG8gd29ybGQ=";
+    //let xx = base64::decode(x).unwrap();
+    //println!("{:?}", String::from_utf8(xx).unwrap());
 
     let mut args = env::args();
 
@@ -22,6 +22,11 @@ fn main() -> Result<(), Box<dyn Error>> {
     let arg_sum = args.len();
     if arg_sum != 3 {
         println!("You should use exactly three arguments to use this program.");
+        println!("Format: cargo run [arg1] [arg2] [arg3]");
+        println!("arg1: key file");
+        println!("arg2: type: 1 for encrypt and 2 for decrypt");
+        println!("arg3: source file");
+        return Ok(());
     }
     
 
@@ -46,7 +51,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
         let md5_sum = format!("{:x}", hasher.finalize());
 
-        println!("{}", md5_sum);
+        println!("Your key file fingerprint: {}", md5_sum);
 
         if md5_sum == "27851c46096777f66599c18d2acb7c1a" {
             println!("[Unlock!!]");
@@ -55,7 +60,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
         if let Some(new_arg) = args.next() {
             if new_arg == "1" {
-                println!("To encrypt!!");
+                println!("type: 1 (To encrypt)");
                 println!("============ orginal content begin ============");
                 let file_source = args.next().unwrap();
                 //println!("{}", file_source.to_string());
@@ -67,7 +72,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 println!("{}", encode(input_data));
                 println!("============ encrypted content end ============");
             } else if new_arg == "2" {
-                println!("To decrypt!!");
+                println!("type: 2 (To decrypt)");
                 println!("============ orginal content begin ============");
                 let file_source = args.next().unwrap();
                 //intln!("{}", file_source.to_string());
@@ -76,16 +81,16 @@ fn main() -> Result<(), Box<dyn Error>> {
                 println!("============ orginal content end ============");
                 println!("Your decrypted content");
                 println!("============ decrypted content begin ============");
-                let i_data = "aGVsbG8gd29ybGQ=";
+                //let i_data = "aGVsbG8gd29ybGQ=";
                 //println!("{}", &input_data);
-                //let tmp = input_data.as_str();
+                //let tmp = input_data.as_str();            debug with WeustiS
                 //println!("{:?}, {:?}", tmp, i_data);
                 input_data.truncate(input_data.len() - 1);
-                let i_output = base64::decode(input_data).unwrap(); // <---- problem line
-                
+                let i_output = base64::decode(input_data).unwrap();
                 //let result_data = base64::decode(&input_data).unwrap();
                 //let data_out = format!("{:x}", output);
-                println!("{:?}", String::from_utf8(i_output).unwrap());
+                println!("{}", String::from_utf8(i_output).unwrap());
+                //println!("{:?}", String::from_utf8(i_output).unwrap());
                 //println!("{:?}", String::from_utf8(de_data).unwrap());
                 println!("============ decrypted content end ============");
             } else {
