@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let arg_sum = args.len();
     if arg_sum != 3 {
         println!("You should use exactly three arguments to use this program.");
-        println!("Format: cargo run [arg1] [arg2] [arg3]");
+        println!("Format: cargo run <arg1> <arg2> <arg3>");
         println!("arg1: key file");
         println!("arg2: type: 1 for encrypt and 2 for decrypt");
         println!("arg3: source file");
