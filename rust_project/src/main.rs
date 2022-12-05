@@ -5,7 +5,8 @@ use std::io::Read;
 use std::fs;
 extern crate base64;
 
-use base64::{encode, decode};
+//use base64::{encode, decode};
+use base64::{encode};
 
 use md5::{Digest, Md5};
 
